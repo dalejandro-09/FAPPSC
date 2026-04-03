@@ -3,7 +3,7 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import { NoteProvider } from "./context/NotesContext";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import { NotesPage } from "./pages/NotesPages";
+import NotesPage from "./pages/NotesPages";
 import NotesFormPage from "./pages/NotesFormPage";
 import ProfilePage from "./pages/ProfilePage";
 import HomePage from "./pages/HomePage";

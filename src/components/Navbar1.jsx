@@ -1,134 +1,39 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar1() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
   return (
-    <nav className="bg-gray-800">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
-          {/* Botón del menú móvil */}
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              type="button"
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-none"
-              aria-controls="mobile-menu"
-              aria-expanded={menuOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              {menuOpen ? (
-                <svg
-                  className="size-6"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="size-6"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 6h18M3 12h18m-18 6h18"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
+    <nav className="sticky top-0 z-50 bg-[#042C53] border-b border-white/10 shadow-sm">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-14">
 
-          {/* Links del menú */}
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex shrink-0 items-center">
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                alt="Logo"
-              />
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="w-7 h-7 rounded-lg bg-blue-400/20 flex items-center justify-center transition-colors group-hover:bg-blue-400/30">
+              <svg className="w-3.5 h-3.5 text-blue-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 3a1 1 0 011 1v4h4a1 1 0 010 2h-4v4a1 1 0 01-2 0v-4H7a1 1 0 010-2h4V7a1 1 0 011-1z"/>
+              </svg>
             </div>
-            <div className="hidden sm:ml-6 sm:block">
-              <div className="flex space-x-4">
-                <a
-                  href="/"
-                  className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                >
-                  Home
-                </a>
-                <a
-                  href="/about"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
-                  About
-                </a>
-              </div>
-            </div>
-          </div>
+            <span className="text-white font-semibold text-sm tracking-wide">NoteApp</span>
+          </Link>
 
-          {/* Dropdown del perfil */}
-          <div className="relative ml-3">
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+          {/* Botones de acceso */}
+          <div className="flex items-center gap-2">
+            <Link
+              to="/login"
+              className="px-4 py-1.5 rounded-lg text-sm font-medium text-blue-200 border border-white/20 hover:bg-white/8 hover:text-white transition-colors duration-150"
             >
-              <img
-                className="size-8 rounded-full"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt="User"
-              />
-            </button>
-
-            {dropdownOpen && (
-              <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5">
-                <a
-                  href="/login"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                >
-                  Login
-                </a>
-                <a
-                  href="/register"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                >
-                  Register
-                </a>
-              </div>
-            )}
+              Iniciar sesión
+            </Link>
+            <Link
+              to="/register"
+              className="px-4 py-1.5 rounded-lg text-sm font-medium bg-[#185FA5] text-white hover:bg-[#378ADD] transition-colors duration-150"
+            >
+              Registrarse
+            </Link>
           </div>
+
         </div>
       </div>
-
-      {/* Menú móvil */}
-      {menuOpen && (
-        <div className="sm:hidden" id="mobile-menu">
-          <div className="space-y-1 px-2 pt-2 pb-3">
-            <a
-              href="/"
-              className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-            >
-              Home
-            </a>
-            <a
-              href="/about"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >
-              About
-            </a>
-          </div>
-        </div>
-      )}
     </nav>
   );
 }

@@ -20,7 +20,7 @@ export const useNotes = () => {
 export function NoteProvider({ children }) {
   const [notes, setNotes] = useState([]);
   const [param, setParam] = useState(null);
-
+  
   const getNotes = async () => {
     try {
       const res = await getNotesRequest();
